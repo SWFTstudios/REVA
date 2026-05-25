@@ -314,7 +314,7 @@ async function handleApi(request, env, ctx, url) {
     if (!listing) return bad("not found", 404);
     if (!requireEditToken(request, listing)) return bad("forbidden", 403);
     if (!env.UPLOADS) {
-      return bad("R2 storage not yet enabled on this Cloudflare account. Enable R2 in the dashboard and create a bucket named 'listfast-uploads'.", 503);
+      return bad("Photo storage is not configured. Ensure R2 is enabled and the Worker is bound to bucket 'swft-reva-uploads'.", 503);
     }
     const form = await request.formData();
     const kind = (form.get("kind") || url.searchParams.get("kind") || "image").toString();

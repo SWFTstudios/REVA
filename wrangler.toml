@@ -20,12 +20,9 @@ binding = "DB"
 database_name = "swft-reva-db"
 database_id = "a9bfce72-ca3d-4033-9a89-3f530aeda8ef"
 
-# R2 — enable at dash.cloudflare.com → R2, then:
-#   npx wrangler r2 bucket create swft-reva-uploads
-# Uncomment below and redeploy:
-# [[r2_buckets]]
-# binding = "UPLOADS"
-# bucket_name = "swft-reva-uploads"
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "swft-reva-uploads"
 
 # Non-secret config — update APP_URL to your workers.dev URL after first deploy
 [vars]
