@@ -1,5 +1,5 @@
-# ListFast — Cloudflare Worker config
-name = "listfast"
+# SWFT REVA — Cloudflare Worker (dynamic site + API; deploy with wrangler, not static Pages)
+name = "swft-reva"
 main = "src/index.js"
 compatibility_date = "2025-05-01"
 compatibility_flags = ["nodejs_compat"]
@@ -9,27 +9,27 @@ workers_dev = true
 directory = "./public"
 binding = "ASSETS"
 
-# Optional custom domain — uncomment and set when you point listfast.co at this Worker
+# Optional custom domain — uncomment when ready
 # routes = [
-#   { pattern = "listfast.co/*", custom_domain = true },
-#   { pattern = "www.listfast.co/*", custom_domain = true }
+#   { pattern = "reva.swftstudios.com/*", custom_domain = true }
 # ]
 
-# D1 binding — listfast-db
+# D1 — database_id filled after: npx wrangler d1 create swft-reva-db
 [[d1_databases]]
 binding = "DB"
-database_name = "listfast-db"
-database_id = "8eabf851-d45b-4766-ac72-69506bdb29ac"
+database_name = "swft-reva-db"
+database_id = "a9bfce72-ca3d-4033-9a89-3f530aeda8ef"
 
-# R2 binding — IMPORTANT: enable R2 in dash.cloudflare.com first,
-# then run: npx wrangler r2 bucket create listfast-uploads
-[[r2_buckets]]
-binding = "UPLOADS"
-bucket_name = "listfast-uploads"
+# R2 — enable at dash.cloudflare.com → R2, then:
+#   npx wrangler r2 bucket create swft-reva-uploads
+# Uncomment below and redeploy:
+# [[r2_buckets]]
+# binding = "UPLOADS"
+# bucket_name = "swft-reva-uploads"
 
-# Non-secret config
+# Non-secret config — update APP_URL to your workers.dev URL after first deploy
 [vars]
-APP_URL = "https://listfast.workers.dev"
+APP_URL = "https://swft-reva.elombe.workers.dev"
 FROM_EMAIL = "elombe@swftstudios.com"
 STRIPE_PRICE_QUICK_SETUP   = "price_1Tay5tAF4d9gCyuNjHypcIdY"
 STRIPE_PRICE_QUICK_MONTHLY = "price_1Tay5wAF4d9gCyuNaATyeJaZ"
@@ -41,11 +41,6 @@ AIRTABLE_TABLE_INQUIRIES = "Inquiries"
 AIRTABLE_TABLE_LISTINGS = "Listings"
 AIRTABLE_VIEW_URL = "https://airtable.com/appx3jGQIAp1lzwW0/shroRmEse80QK8gKz"
 
-# Secrets — set via: npx wrangler secret put STRIPE_SECRET_KEY
-# Required secrets:
-#   STRIPE_SECRET_KEY        — Stripe live or test secret key (sk_live_... or sk_test_...)
-#   STRIPE_WEBHOOK_SECRET    — Stripe webhook signing secret (whsec_...)
-#   ANTHROPIC_API_KEY        — For REVA chatbot (sk-ant-...)
-#   ADMIN_EMAIL              — Where new-inquiry notifications go (you)
-#   RESEND_API_KEY           — Optional, for outbound transactional email
-#   AIRTABLE_API_KEY         — Airtable personal access token for base appx3jGQIAp1lzwW0
+# Secrets — npx wrangler secret put <NAME>
+#   STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET, ANTHROPIC_API_KEY, ADMIN_EMAIL
+#   RESEND_API_KEY (optional), AIRTABLE_API_KEY (optional)

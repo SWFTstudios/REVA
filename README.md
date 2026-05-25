@@ -1,6 +1,10 @@
-# ListFast
+# SWFT REVA (swft-reva)
 
-Same-day hosted property listing pages with REVA, the AI real-estate assistant. Built on Cloudflare Workers + D1 + R2, payments by Stripe.
+Swift Real Estate Virtual Assistant — property listing intake, preview pages, and REVA AI on Cloudflare Workers + D1 + R2, with Stripe payments.
+
+**Production:** https://swft-reva.elombe.workers.dev
+
+**Deploy guide:** [DEPLOY.md](DEPLOY.md) (Workers vs Pages, secrets, R2, CI).
 
 ## What's in this repo
 
@@ -78,11 +82,13 @@ npx wrangler d1 execute listfast-db --remote --file=src/migrations/001_intake_op
 
 ### 4. Deploy
 
+See **[DEPLOY.md](DEPLOY.md)** for full steps (Worker only — do not use static Pages for this repo).
+
 ```bash
 npm run deploy
 ```
 
-Wrangler will print a `listfast.<your-subdomain>.workers.dev` URL. Visit it. The landing page should render.
+Live Worker: `https://swft-reva.elombe.workers.dev`
 
 ### 5. Wire up the Stripe webhook
 

@@ -1,15 +1,16 @@
 {
-  "name": "listfast",
+  "name": "swft-reva",
   "version": "0.1.0",
   "private": true,
-  "description": "ListFast — same-day hosted property listing pages with REVA, the real-estate virtual assistant.",
+  "description": "SWFT REVA — Swift Real Estate Virtual Assistant. Property listings on Cloudflare Workers with D1, R2, and REVA AI.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "tail": "wrangler tail",
-    "db:apply": "wrangler d1 execute listfast-db --remote --file=src/schema.sql",
+    "db:apply": "wrangler d1 execute swft-reva-db --remote --file=src/schema.sql",
+    "db:migrate": "wrangler d1 execute swft-reva-db --remote --file=src/migrations/001_intake_options.sql",
     "secrets:list": "wrangler secret list"
   },
   "devDependencies": {
