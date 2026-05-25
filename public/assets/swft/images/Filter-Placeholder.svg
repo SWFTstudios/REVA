@@ -1,0 +1,8 @@
+<svg id="Filter_Placeholder" data-name="Filter Placeholder" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="options">
+    <rect id="Rectangle_4496" data-name="Rectangle 4496" width="16" height="16" opacity="0"/>
+    <path id="Path_8836" data-name="Path 8836" d="M5.675,10.12V2.667a.667.667,0,1,0-1.333,0V10.12a2,2,0,0,0,0,3.76v.787a.667.667,0,1,0,1.333,0V13.88a2,2,0,0,0,0-3.76Zm-.667,2.547A.667.667,0,1,1,5.675,12,.667.667,0,0,1,5.008,12.667Z" transform="translate(-1.008 -0.667)"/>
+    <path id="Path_8837" data-name="Path 8837" d="M19.008,9.333a2,2,0,0,0-1.333-1.88V2.667a.667.667,0,0,0-1.333,0V7.453a2,2,0,0,0,0,3.76v3.453a.667.667,0,1,0,1.333,0V11.213a2,2,0,0,0,1.333-1.88Zm-2,.667a.667.667,0,1,1,.667-.667A.667.667,0,0,1,17.008,10Z" transform="translate(-5.008 -0.667)"/>
+    <path id="Path_8838" data-name="Path 8838" d="M13,4a2,2,0,1,0-2.667,1.88v8.787a.667.667,0,1,0,1.333,0V5.877A2,2,0,0,0,13,4Zm-2,.667A.667.667,0,1,1,11.667,4,.667.667,0,0,1,11,4.664Z" transform="translate(-3 -0.664)"/>
+  </g>
+</svg>

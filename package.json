@@ -1,0 +1,18 @@
+{
+  "name": "listfast",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ListFast — same-day hosted property listing pages with REVA, the real-estate virtual assistant.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "db:apply": "wrangler d1 execute listfast-db --remote --file=src/schema.sql",
+    "secrets:list": "wrangler secret list"
+  },
+  "devDependencies": {
+    "wrangler": "^3.114.17"
+  }
+}

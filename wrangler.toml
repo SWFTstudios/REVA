@@ -1,0 +1,51 @@
+# ListFast — Cloudflare Worker config
+name = "listfast"
+main = "src/index.js"
+compatibility_date = "2025-05-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+# Optional custom domain — uncomment and set when you point listfast.co at this Worker
+# routes = [
+#   { pattern = "listfast.co/*", custom_domain = true },
+#   { pattern = "www.listfast.co/*", custom_domain = true }
+# ]
+
+# D1 binding — listfast-db
+[[d1_databases]]
+binding = "DB"
+database_name = "listfast-db"
+database_id = "8eabf851-d45b-4766-ac72-69506bdb29ac"
+
+# R2 binding — IMPORTANT: enable R2 in dash.cloudflare.com first,
+# then run: npx wrangler r2 bucket create listfast-uploads
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "listfast-uploads"
+
+# Non-secret config
+[vars]
+APP_URL = "https://listfast.workers.dev"
+FROM_EMAIL = "elombe@swftstudios.com"
+STRIPE_PRICE_QUICK_SETUP   = "price_1Tay5tAF4d9gCyuNjHypcIdY"
+STRIPE_PRICE_QUICK_MONTHLY = "price_1Tay5wAF4d9gCyuNaATyeJaZ"
+STRIPE_PRICE_PRO_SETUP     = "price_1Tay5zAF4d9gCyuNgdr5RHcV"
+STRIPE_PRICE_PRO_MONTHLY   = "price_1Tay62AF4d9gCyuNzcP1nlfD"
+STRIPE_PRICE_PORTFOLIO     = "price_1Tay64AF4d9gCyuNiYsUrlBZ"
+AIRTABLE_BASE_ID = "appx3jGQIAp1lzwW0"
+AIRTABLE_TABLE_INQUIRIES = "Inquiries"
+AIRTABLE_TABLE_LISTINGS = "Listings"
+AIRTABLE_VIEW_URL = "https://airtable.com/appx3jGQIAp1lzwW0/shroRmEse80QK8gKz"
+
+# Secrets — set via: npx wrangler secret put STRIPE_SECRET_KEY
+# Required secrets:
+#   STRIPE_SECRET_KEY        — Stripe live or test secret key (sk_live_... or sk_test_...)
+#   STRIPE_WEBHOOK_SECRET    — Stripe webhook signing secret (whsec_...)
+#   ANTHROPIC_API_KEY        — For REVA chatbot (sk-ant-...)
+#   ADMIN_EMAIL              — Where new-inquiry notifications go (you)
+#   RESEND_API_KEY           — Optional, for outbound transactional email
+#   AIRTABLE_API_KEY         — Airtable personal access token for base appx3jGQIAp1lzwW0
